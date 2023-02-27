@@ -29,8 +29,6 @@ form.addEventListener('submit', e => {
   console.log(amountValue, delayValue, stepValue);
 
   for (let position = 1; position <= amountValue; position += 1) {
-    delayValue += stepValue;
-    console.log(delayValue);
 
     createPromise(position, delayValue)
       .then(({ position, delay }) => {
@@ -43,6 +41,7 @@ form.addEventListener('submit', e => {
           `❌ Rejected promise ${position} in ${delay}ms`
         );
       });
+    delayValue += stepValue;
   }
   form.reset();
 });
